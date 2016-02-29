@@ -22,14 +22,10 @@ public class Client {
     private static final int PORT = 1080;
     private static Registry registre;
 
-    public static void main(String[] args, String HOST) throws Exception {
-    
-        }
     
     public static boolean client() throws Exception {
-    registre = LocateRegistry.getRegistry(HOST, PORT);
-        Api remoteApi = (Api) registre.lookup(Api.class.getSimpleName());
         registre = LocateRegistry.getRegistry(HOST, PORT);
+        Api remoteApi = (Api) registre.lookup(Api.class.getSimpleName());
         
         int returnedData = 0;
         returnedData = (remoteApi.Conectivitat(new Data(1)).getValor());

@@ -6,6 +6,7 @@
 package rasppractica;
 
 import XMLRW.XMLWriter;
+import XMLRW.XMLReader;
 import client.Client;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,16 +26,16 @@ import static sun.plugin.javascript.navig.JSType.Document;
 
 
 public class FXMLDocumentController implements Initializable {
-    
-    int LGrup1 = 0;
-    int LGrup2 = 0;
-XMLWriter EscriuXML = new XMLWriter();
-       
         
+    XMLWriter EscriuXML = new XMLWriter();
+    XMLReader LlegeixXML = new XMLReader();
+
+       
+        int LGrup1 = 0;
         String LedGrup1 = "Apagat";
         String LedGrup1Count = Integer.toString(LGrup1);
         
-       
+        int LGrup2 = 0;
         String LedGrup2= "Apagat" ;
         String LedGrup2Count= Integer.toString(LGrup2);
                     
@@ -54,10 +55,7 @@ XMLWriter EscriuXML = new XMLWriter();
         String Servo= "Apagat";
         String ServoCount= Integer.toString(nServoCount);
         
-        
-    @FXML public Label alarma;
-    @FXML private Label servo;
-    @FXML public Text llum; 
+
     @FXML public Label coneccio;
     
     @Override
@@ -76,6 +74,16 @@ XMLWriter EscriuXML = new XMLWriter();
       
     }
     
+    @FXML public void BotoGuardar(ActionEvent event) {
+        EscriuXML.vHistorialAccionsXML(LedGrup1, LedGrup1Count, LedGrup2, LedGrup2Count,
+                Luz, LuzCount, Pito, PitoCount, Boton, BotoCount, Servo, ServoCount);
+    }
+    
+    @FXML public void BotoCargar(ActionEvent event) {
+        LlegeixXML.vHistorialAccionsXML();
+        
+        //TODO AGAFAR DE LA CLASE XMLReader y redeclarar variables aqui
+    }
     
     
     @FXML public void BotoLed1(ActionEvent event) {
@@ -83,7 +91,6 @@ XMLWriter EscriuXML = new XMLWriter();
         LedGrup1 = "Ences";
         LedGrup1Count = Integer.toString(LGrup1);
         
-        EscriuXML.vHistorialAccionsXML(LedGrup1, LedGrup1Count, LedGrup2, LedGrup2Count, Luz, LuzCount, Pito, PitoCount, Boton, BotoCount, Servo, ServoCount);
 
     }
     
@@ -93,7 +100,6 @@ XMLWriter EscriuXML = new XMLWriter();
         LedGrup2= "Ences";
         LedGrup1Count = Integer.toString(LGrup2);
 
-        EscriuXML.vHistorialAccionsXML(LedGrup1, LedGrup1Count, LedGrup2, LedGrup2Count, Luz, LuzCount, Pito, PitoCount, Boton, BotoCount, Servo, ServoCount);
 
     }
 
@@ -102,8 +108,6 @@ XMLWriter EscriuXML = new XMLWriter();
         nPito = nPito++;
         Pito= "Ences";
         LedGrup1Count = Integer.toString(nPito);
-
-        EscriuXML.vHistorialAccionsXML(LedGrup1, LedGrup1Count, LedGrup2, LedGrup2Count, Luz, LuzCount, Pito, PitoCount, Boton, BotoCount, Servo, ServoCount);
 
     }
     

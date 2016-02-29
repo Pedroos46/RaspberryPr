@@ -49,5 +49,8 @@
       
       <Button layoutX="500.0" layoutY="12.0" mnemonicParsing="false" onAction="#BotoConectar" text="Conectar" />
       <Label fx:id="coneccio" layoutX="575.0" layoutY="16.0" />
+      
+      <Button layoutX="525.0" layoutY="366.0" mnemonicParsing="false" text="Guardar a XML" onAction="#BotoGuardar"/>
+      <Button layoutX="429.0" layoutY="366.0" mnemonicParsing="false" text="Cargar XML" onAction="#BotoCargar" />
     </children>
 </AnchorPane>

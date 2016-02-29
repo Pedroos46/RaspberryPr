@@ -10,5 +10,12 @@ package XMLRW;
  * @author Roger
  */
 public class XMLReader {
+    public XMLReader(){}
+    
+    public void vHistorialAccionsXML(){
+    
+        //TODO LLEGIR XML Y PASAR VARIABLES
+    }
+    
     
 }
