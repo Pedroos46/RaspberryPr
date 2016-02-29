@@ -18,7 +18,7 @@ import java.rmi.registry.*;
 public class Client {
     public Client(){}
     
-    private static final String HOST = "127.0.1.1"; //localhost
+    private static final String HOST = "192.168.1.3"; //localhost
     private static final int PORT = 1080;
     private static Registry registre;
 

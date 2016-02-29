@@ -29,6 +29,7 @@ public class FXMLDocumentController implements Initializable {
         
     XMLWriter EscriuXML = new XMLWriter();
     XMLReader LlegeixXML = new XMLReader();
+    Client client = new Client();
 
        
         int LGrup1 = 0;
@@ -81,12 +82,16 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML public void BotoCargar(ActionEvent event) {
         LlegeixXML.vHistorialAccionsXML();
+        String xd = "";
+        LlegeixXML.hola = xd;
         
         //TODO AGAFAR DE LA CLASE XMLReader y redeclarar variables aqui
     }
     
     
-    @FXML public void BotoLed1(ActionEvent event) {
+    @FXML public void BotoLed1(ActionEvent event) throws Exception {
+        client.EncendreLedGrup1();
+        
         LGrup1 = LGrup1++;
         LedGrup1 = "Ences";
         LedGrup1Count = Integer.toString(LGrup1);
