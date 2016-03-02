@@ -2,6 +2,8 @@ package client;
 
 import api.Api;
 import api.Data;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.logging.Level;
@@ -47,21 +49,31 @@ public class ClientAsincron extends Thread {
     }
     
     public int LlegirLDR() throws Exception{
-        registre = LocateRegistry.getRegistry(HOST, PORT);
-        Api remoteApi = (Api) registre.lookup(Api.class.getSimpleName());
-        
-        int returnedData = (remoteApi.LlegirLDR(new Data(1)).getValor());
-        System.out.println("EncendrePito:" + returnedData);
+        int returnedData = 5;
+        try{
+            registre = LocateRegistry.getRegistry(HOST, PORT);
+            Api remoteApi = (Api) registre.lookup(Api.class.getSimpleName());
+
+            returnedData = (remoteApi.LlegirLDR(new Data(1)).getValor());
+            System.out.println("EncendrePito:" + returnedData);
+        }catch (RemoteException | NotBoundException e){
+             System.err.println(e.getMessage());
+        }
         
         return returnedData;
     }
      
     public int LlegirBoto() throws Exception{
-        registre = LocateRegistry.getRegistry(HOST, PORT);
-        Api remoteApi = (Api) registre.lookup(Api.class.getSimpleName());
-        
-        int returnedData = (remoteApi.LlegirBoto(new Data(1)).getValor());
-        System.out.println("ApagarPito:" + returnedData);
+        int returnedData = 5;
+        try{
+            registre = LocateRegistry.getRegistry(HOST, PORT);
+            Api remoteApi = (Api) registre.lookup(Api.class.getSimpleName());
+
+            returnedData = (remoteApi.LlegirBoto(new Data(1)).getValor());
+            System.out.println("ApagarPito:" + returnedData);
+        }catch (RemoteException | NotBoundException e){
+             System.err.println(e.getMessage());
+        }
     
         return returnedData;
     }

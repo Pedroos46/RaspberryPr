@@ -6,6 +6,7 @@
 package client;
 
 import api.Api;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -23,8 +24,14 @@ public abstract class ClientServo {
     
     
     public void Servo() throws Exception{
-        registre = LocateRegistry.getRegistry(HOST, PORT);
-        Api remoteApi = (Api) registre.lookup(Api.class.getSimpleName()); 
+        try{
+            registre = LocateRegistry.getRegistry(HOST, PORT);
+            Api remoteApi = (Api) registre.lookup(Api.class.getSimpleName()); 
+            
+            
+        }catch (RemoteException | NotBoundException e){
+             System.err.println(e.getMessage());
+        }
         
     }
  

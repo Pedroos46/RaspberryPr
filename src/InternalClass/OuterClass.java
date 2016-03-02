@@ -5,6 +5,10 @@
  */
 package InternalClass;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
 /**
  *
  * @author Roger
@@ -14,6 +18,16 @@ public class OuterClass {
         
         public void print(){	   
         System.out.println("Hola, soc una clase interna :)");
+        
+        try {
+        Clip clip = AudioSystem.getClip();
+        AudioInputStream inputStream = AudioSystem.getAudioInputStream(
+        OuterClass.class.getResourceAsStream("@resources/sound4.mp3"));
+        clip.open(inputStream);
+        clip.start(); 
+      } catch (Exception e) {
+        System.err.println(e.getMessage());
+      }
         
         }
    }

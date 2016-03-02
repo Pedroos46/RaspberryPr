@@ -153,7 +153,7 @@ public class FXMLDocumentController implements Initializable {
     
     int stateBotoServo = 0; 
     @FXML public void BotoActivaServo(ActionEvent event) throws Exception {
-      outer.cridarInner();
+        outer.cridarInner();
       
         if(stateBoto1 == 0){
             nServoCount++;
