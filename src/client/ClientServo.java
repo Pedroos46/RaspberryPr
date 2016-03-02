@@ -24,11 +24,7 @@ public abstract class ClientServo {
     
     public void Servo() throws Exception{
         registre = LocateRegistry.getRegistry(HOST, PORT);
-        Api remoteApi = (Api) registre.lookup(Api.class.getSimpleName());
-        registre = LocateRegistry.getRegistry(HOST, PORT);
-        
-        
-    
+        Api remoteApi = (Api) registre.lookup(Api.class.getSimpleName()); 
         
     }
  

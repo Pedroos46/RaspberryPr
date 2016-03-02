@@ -2,6 +2,9 @@ package client;
 
 import api.Api;
 import api.Data;
+import java.io.IOException;
+import java.rmi.ConnectException;
+import java.rmi.UnknownHostException;
 import java.rmi.registry.*;
 
 /**
@@ -24,78 +27,86 @@ public class Client {
 
     
     public static boolean client() throws Exception {
-        registre = LocateRegistry.getRegistry(HOST, PORT);
-        Api remoteApi = (Api) registre.lookup(Api.class.getSimpleName());
-        
         int returnedData = 0;
-        returnedData = (remoteApi.Conectivitat(new Data(1)).getValor());
-        System.out.println("Conectivitat:" + returnedData);
-        
-        if (returnedData == 1){
-            return true;
-        } else {
-            return false;
+        try { 
+            registre = LocateRegistry.getRegistry(HOST, PORT);
+            Api remoteApi = (Api) registre.lookup(Api.class.getSimpleName());
+
+           
+            returnedData = (remoteApi.Conectivitat(new Data(1)).getValor());
+            System.out.println("Conectivitat:" + returnedData);
+
         }
+        catch (UnknownHostException e) {
+        e.printStackTrace();
+        } catch (IOException e) {
+        e.printStackTrace();}
+        
+         if (returnedData == 1){
+                return true;
+            } else {
+                return false;
+            }
     }
     
-    public void EncendreLedGrup1() throws Exception{
+    public int EncendreLedGrup1() throws Exception{
         registre = LocateRegistry.getRegistry(HOST, PORT);
         Api remoteApi = (Api) registre.lookup(Api.class.getSimpleName());
-        registre = LocateRegistry.getRegistry(HOST, PORT);
         
-        int returnedData = 0;
-        returnedData = (remoteApi.EncendreLedGrup1(new Data(1)).getValor());
+        int returnedData = (remoteApi.EncendreLedGrup1(new Data(1)).getValor());
         System.out.println("EncendreLedGrup1:" + returnedData);
+        
+        return returnedData;
     }
     
-     public void ApagarLedGrup1() throws Exception{
+     public int ApagarLedGrup1() throws Exception{
         registre = LocateRegistry.getRegistry(HOST, PORT);
         Api remoteApi = (Api) registre.lookup(Api.class.getSimpleName());
-        registre = LocateRegistry.getRegistry(HOST, PORT);
         
-        int returnedData = 0;
-        returnedData = (remoteApi.ApagarLedGrup1(new Data(1)).getValor());
+        int returnedData = (remoteApi.ApagarLedGrup1(new Data(1)).getValor());
         System.out.println("ApagarLedGrup1:" + returnedData);
+        
+        return returnedData;
     }
      
-      public void EncendreLedGrup2() throws Exception{
+      public int EncendreLedGrup2() throws Exception{
         registre = LocateRegistry.getRegistry(HOST, PORT);
         Api remoteApi = (Api) registre.lookup(Api.class.getSimpleName());
-        registre = LocateRegistry.getRegistry(HOST, PORT);
         
-        int returnedData = 0;
-        returnedData = (remoteApi.EncendreLedGrup2(new Data(1)).getValor());
+        int returnedData = (remoteApi.EncendreLedGrup2(new Data(1)).getValor());
         System.out.println("EncendreLedGrup2:" + returnedData);
+        
+        return returnedData;
     }
     
-     public void ApagarLedGrup2() throws Exception{
+     public int ApagarLedGrup2() throws Exception{
         registre = LocateRegistry.getRegistry(HOST, PORT);
         Api remoteApi = (Api) registre.lookup(Api.class.getSimpleName());
-        registre = LocateRegistry.getRegistry(HOST, PORT);
         
-        int returnedData = 0;
-        returnedData = (remoteApi.ApagarLedGrup2(new Data(1)).getValor());
+        int returnedData = (remoteApi.ApagarLedGrup2(new Data(1)).getValor());
         System.out.println("ApagarLedGrup2:" + returnedData);
+        
+        return returnedData;
     }
      
-     public void EncendrePito() throws Exception{
+     public int EncendrePito() throws Exception{
         registre = LocateRegistry.getRegistry(HOST, PORT);
         Api remoteApi = (Api) registre.lookup(Api.class.getSimpleName());
-        registre = LocateRegistry.getRegistry(HOST, PORT);
         
-        int returnedData = 0;
-        returnedData = (remoteApi.EncendrePito(new Data(1)).getValor());
-        System.out.println("EncendreLedGrup2:" + returnedData);
+        int returnedData = (remoteApi.EncendrePito(new Data(1)).getValor());
+        System.out.println("EncendrePito:" + returnedData);
+        
+        return returnedData;
     }
      
-    public void ApagarPito() throws Exception{
+    public int ApagarPito() throws Exception{
         registre = LocateRegistry.getRegistry(HOST, PORT);
         Api remoteApi = (Api) registre.lookup(Api.class.getSimpleName());
-        registre = LocateRegistry.getRegistry(HOST, PORT);
         
-        int returnedData = 0;
-        returnedData = (remoteApi.ApagarPito(new Data(1)).getValor());
-        System.out.println("EncendreLedGrup2:" + returnedData);
+        int returnedData = (remoteApi.ApagarPito(new Data(1)).getValor());
+        System.out.println("ApagarPito:" + returnedData);
+    
+        return returnedData;
     }
 
 }

@@ -180,7 +180,7 @@ public class XMLWriter {
                 
                 
             //Superclase SERVO
-            Element servo = doc.createElement("Pito");
+            Element servo = doc.createElement("Servo");
             rootElement.appendChild(servo);
 
 

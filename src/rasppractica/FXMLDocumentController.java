@@ -5,14 +5,17 @@
  */
 package rasppractica;
 
+import InternalClass.OuterClass;
 import XMLRW.XMLWriter;
 import XMLRW.XMLReader;
 import client.Client;
+import client.ClientServo;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import javafx.scene.control.Label;
@@ -25,39 +28,37 @@ import static sun.plugin.javascript.navig.JSType.Document;
 
 
 
-public class FXMLDocumentController implements Initializable {
-        
+public class FXMLDocumentController implements Initializable {  
     XMLWriter EscriuXML = new XMLWriter();
     XMLReader LlegeixXML = new XMLReader();
     Client client = new Client();
+    ClientServo servo = new ClientServo(){};
+    OuterClass outer=new OuterClass();
 
-       
+
         int LGrup1 = 0;
         String LedGrup1 = "Apagat";
-        String LedGrup1Count = Integer.toString(LGrup1);
         
         int LGrup2 = 0;
         String LedGrup2= "Apagat" ;
-        String LedGrup2Count= Integer.toString(LGrup2);
                     
         int nLuz = 0 ;
-        String Luz= "Apagat";
-        String LuzCount= Integer.toString(nLuz); 
+        String Luz= "Apagat"; //ASINCRONO O POTSE SINCRONO PERO NO ENCARA VAL, POTSE LE POSO ALLA A UN FIL A CORRE I ENGA 
         
         int nPito = 0;
         String Pito= "Apagat"; 
-        String PitoCount= Integer.toString(nPito);
         
         int nBoto = 0;
-        String Boton= "Apagat";
-        String BotoCount= Integer.toString(nBoto);
+        String Boton= "Apagat"; //ASINCRONO O POTSE SICRONO PERO NO ENCARA VAL, EL FIL YA ESTA SHA DE FER EL BUCLE DE LECTURA Y A FUNCIO A SERVER HOLER AJUDAM AMB AIXO
         
         int nServoCount = 0;
         String Servo= "Apagat";
-        String ServoCount= Integer.toString(nServoCount);
         
 
     @FXML public Label coneccio;
+    @FXML public Label estatled1;
+    @FXML public Label estatled2;
+    @FXML public Label estatalarma;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -65,17 +66,25 @@ public class FXMLDocumentController implements Initializable {
     }    
     
     @FXML public void BotoConectar(ActionEvent event) throws Exception {
-       Thread.sleep(1000);
+       Thread.sleep(750);
         if(Client.client() == true){
             coneccio.setText("Conectat");
             //TODO: INHABILITAT EL BOTO
         }else {
             coneccio.setText("Sense Conexio");
         }
-      
     }
     
+    //XML
     @FXML public void BotoGuardar(ActionEvent event) {
+        
+        String LedGrup1Count = Integer.toString(LGrup1);
+        String LedGrup2Count = Integer.toString(LGrup2);
+        String LuzCount= Integer.toString(nLuz); 
+        String PitoCount= Integer.toString(nPito);
+        String BotoCount= Integer.toString(nBoto);
+        String ServoCount= Integer.toString(nServoCount);
+
         EscriuXML.vHistorialAccionsXML(LedGrup1, LedGrup1Count, LedGrup2, LedGrup2Count,
                 Luz, LuzCount, Pito, PitoCount, Boton, BotoCount, Servo, ServoCount);
     }
@@ -88,32 +97,75 @@ public class FXMLDocumentController implements Initializable {
         //TODO AGAFAR DE LA CLASE XMLReader y redeclarar variables aqui
     }
     
-    
+     int stateBoto1 = 0; 
     @FXML public void BotoLed1(ActionEvent event) throws Exception {
-        client.EncendreLedGrup1();
         
-        LGrup1 = LGrup1++;
-        LedGrup1 = "Ences";
-        LedGrup1Count = Integer.toString(LGrup1);
-        
-
+        if(stateBoto1 == 0){
+            LGrup1++;
+            LedGrup1 = "Ences";
+            //client.EncendreLedGrup1();
+            estatled1.setText("ON");
+            stateBoto1 = 1;
+        }else{if(stateBoto1 == 1){
+            LedGrup1 = "Apagat";   
+            //client.ApagarLedGrup1();
+            estatled1.setText("OFF");
+            stateBoto1 = 0;
+            }
+        }  
     }
     
-   
-    @FXML public void BotoLed2(ActionEvent event) {
-        LGrup2 = LGrup2++;
-        LedGrup2= "Ences";
-        LedGrup1Count = Integer.toString(LGrup2);
-
-
+   int stateBoto2 = 0; 
+    @FXML public void BotoLed2(ActionEvent event) throws Exception {
+                 
+        if(stateBoto2 == 0){
+            LGrup2++;
+            LedGrup2 = "Ences";
+            //client.EncendreLedGrup2();
+            estatled2.setText("ON");
+            stateBoto2 = 1;
+        }else{if(stateBoto2 == 1){
+            LedGrup2 = "Apagat";   
+            //client.ApagarLedGrup2();
+            estatled2.setText("OFF");
+            stateBoto2 = 0;
+            }
+        }
     }
 
+    int stateAlarma = 0; 
+    @FXML public void BotoAlarma(ActionEvent event) throws Exception {
+        
+        if(stateAlarma == 0){
+            nPito++;
+            Pito = "Ences";
+            //client.EncendrePito();
+            estatalarma.setText("ON");
+            stateAlarma = 1;
+        }else{if(stateAlarma == 1){
+            Pito = "Apagat";   
+            //client.ApagarPito();
+            estatalarma.setText("OFF");
+            stateAlarma = 0;
+            }
+        }
+    }
     
-    @FXML public void BotoAlarma(ActionEvent event) {
-        nPito = nPito++;
-        Pito= "Ences";
-        LedGrup1Count = Integer.toString(nPito);
-
+    int stateBotoServo = 0; 
+    @FXML public void BotoActivaServo(ActionEvent event) throws Exception {
+      outer.cridarInner();
+      
+        if(stateBoto1 == 0){
+            nServoCount++;
+            Servo = "Ences";
+            servo.Servo();
+            stateBoto1 = 1;
+        }else{if(stateBoto1 == 1){
+            LedGrup1 = "Apagat";   
+            stateBoto1 = 0;
+            }
+        }
+        
     }
     
   

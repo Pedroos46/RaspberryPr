@@ -26,6 +26,8 @@ public interface Api extends Remote {
     
     public Data EncendrePito(Data objecte) throws RemoteException;
     public Data ApagarPito(Data objecte) throws RemoteException;
-
+    
+    public Data LlegirLDR(Data objecte) throws RemoteException;
+    public Data LlegirBoto(Data objecte) throws RemoteException;
 
 }
