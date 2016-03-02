@@ -39,10 +39,9 @@ public class Client {
             System.out.println("Conectivitat:" + returnedData);
 
         }
-        catch (UnknownHostException e) {
-        e.printStackTrace();
-        } catch (IOException e) {
-        e.printStackTrace();}
+        catch (RemoteException | NotBoundException e){
+             System.err.println(e.getMessage());
+        }
         
          if (returnedData == 1){
                 return true;

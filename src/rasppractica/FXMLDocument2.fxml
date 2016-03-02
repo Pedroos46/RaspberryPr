@@ -44,7 +44,7 @@
       <Label layoutX="27.0" layoutY="294.0" text="Boton" />
       <Text fx:id="clicat" layoutX="167.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clicat" />
       <Separator layoutX="20.0" layoutY="101.0" prefWidth="200.0" />
-      <Label layoutX="44.0" layoutY="16.0" text="Control de sensros mitjançant raspberry" />
+      <Label layoutX="44.0" layoutY="16.0" text="Control de sensors mitjançant Raspberry" />
       
       <Button layoutX="500.0" layoutY="12.0" mnemonicParsing="false" onAction="#BotoConectar" text="Conectar" />
       <Label fx:id="coneccio" layoutX="575.0" layoutY="16.0" />

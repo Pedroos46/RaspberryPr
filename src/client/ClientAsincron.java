@@ -19,8 +19,8 @@ public class ClientAsincron extends Thread {
     private static final int PORT = 1080;
     private static Registry registre;
     
-    int nEstatLDR;
-    int nEstatBoto;
+    public int nEstatLDR;
+    public int nEstatBoto;
     
     @Override
     public void run(){  

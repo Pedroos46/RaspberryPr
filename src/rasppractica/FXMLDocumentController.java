@@ -9,9 +9,12 @@ import InternalClass.OuterClass;
 import XMLRW.XMLWriter;
 import XMLRW.XMLReader;
 import client.Client;
+import client.ClientAsincron;
 import client.ClientServo;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -29,10 +32,17 @@ import static sun.plugin.javascript.navig.JSType.Document;
 
 
 public class FXMLDocumentController implements Initializable {  
+    
+    //XML
     XMLWriter EscriuXML = new XMLWriter();
     XMLReader LlegeixXML = new XMLReader();
+    
+    //CLIENTS
     Client client = new Client();
     ClientServo servo = new ClientServo(){};
+    ClientAsincron asincron = new ClientAsincron();
+    
+    //OTHER
     OuterClass outer=new OuterClass();
 
 
@@ -59,14 +69,45 @@ public class FXMLDocumentController implements Initializable {
     @FXML public Label estatled1;
     @FXML public Label estatled2;
     @FXML public Label estatalarma;
+    @FXML public Label clicat;
+    @FXML public Label llum;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        while(true){
+            try {
+                Thread.sleep(750);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            int tempLuz;
+            tempLuz = asincron.nEstatLDR ;
+            if (tempLuz == 1){
+                Luz = "Dectecto llum";
+                llum.setText("Llum");
+            } else {
+                Luz = "Poca Llum/Fosc";
+                llum.setText("Sense Llum");
+            }
+            
+            int tempBoto;
+            tempBoto = asincron.nEstatBoto;
+            if (tempBoto == 1){
+                Boton = "Pulsat";
+                clicat.setText("Pulsat");
+
+            }else{
+                Boton = "No Pulsat";
+                clicat.setText("No pulsat");
+            }
+            
+            
+        }
     }    
     
     @FXML public void BotoConectar(ActionEvent event) throws Exception {
-       Thread.sleep(750);
+        Thread.sleep(750);
         if(Client.client() == true){
             coneccio.setText("Conectat");
             //TODO: INHABILITAT EL BOTO

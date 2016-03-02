@@ -1,5 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
+ * To change this license header, choose License Headers in Project Properties..
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -18,7 +18,7 @@ import java.rmi.registry.Registry;
 public abstract class ClientServo {
     public ClientServo(){}
     
-    private static final String HOST = "127.0.1.1"; //localhost
+    private static final String HOST = "192.168.1.3"; //localhost
     private static final int PORT = 1080;
     private static Registry registre;
     
