@@ -15,10 +15,10 @@ public class StackClass {
     public StackClass(){     
     }
     
-    Stack<String> stack = new Stack<>();
+    Stack<Integer> stack = new Stack<>();
   
-    public void push(String i){
-        stack.push(i);
+    public void push(Int i){
+        stack.push(new Integer(i));
         System.out.println("Push fet." + i);
     }
     
@@ -31,11 +31,11 @@ public class StackClass {
         return(stack.isEmpty());
     }
     
-    public String peek(){
+    public int peek(){
         return (stack.peek());
     }
     
-    public String getTop(){
+    public int getTop(){
         System.out.print(stack);
         System.out.println("S'ha agafat el primer del Stack.");
         return(stack.peek());
