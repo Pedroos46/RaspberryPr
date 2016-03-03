@@ -2,6 +2,8 @@
 package XMLRW;
 
 
+import Exceptions.CustomExceptions;
+import Exceptions.CustomExceptions.*;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.transform.Transformer;
@@ -17,13 +19,16 @@ import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Optional;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javax.xml.transform.OutputKeys;
 
 /**
  *
  * @author Roger
  */
-public class XMLWriter {
+public class XMLWriter extends CustomExceptions{
     public XMLWriter(){}
     
     public String vActualTime(){
@@ -41,7 +46,7 @@ public class XMLWriter {
     
     
   
-    public void vCarpetaEscriptori(){
+    public void vCarpetaEscriptori()throws ExcepcioCarpetaNoCreada{
         File desktop = new File(System.getProperty("user.home"), "Desktop");
         File theDir = new File(desktop + "\\RaspberryXML");
             theDir.setReadable(true);
@@ -55,7 +60,23 @@ public class XMLWriter {
                     theDir.mkdir();
                     result = true;
                 } 
-                catch(SecurityException se){}        
+                 catch(SecurityException se){
+                  throw new ExcepcioCarpetaNoCreada();
+                 }
+             /*       Alert alert1 = new Alert(Alert.AlertType.CONFIRMATION);
+    alert1.setTitle("SecurityException llençada");
+    alert1.setHeaderText("La carpeta no ha estat creada");
+    alert1.setContentText("Vols crearla?");
+
+    Optional<ButtonType> result1 = alert1.showAndWait();
+    if (result1.get() == ButtonType.OK){ theDir.mkdir();
+    // ... user chose OK
+    } else {
+    // ... user chose CANCEL or closed the dialog
+}
+               // throw new CustomExceptions.ExcepcioCarpetaNoCreada();
+               }   
+                //catch(throw new ExcepcioCarpetaNoCreada();){}*/   
             if(result) {    
                 System.out.println("DIR created");  
             }
