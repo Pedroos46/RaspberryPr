@@ -5,8 +5,8 @@
  */
 package rasppractica;
 
-import DataStructures.MapClass;
-import DataStructures.StackClass;
+import DataStructures.ArrayListClass;
+
 import InternalClass.OuterClass;
 import XMLRW.XMLWriter;
 import XMLRW.XMLReader;
@@ -46,8 +46,8 @@ public class FXMLDocumentController implements Initializable {
     
     //OTHER
     OuterClass outer=new OuterClass();
-    StackClass stack = new StackClass();
-    MapClass mapout = new MapClass();
+    ArrayListClass array = new ArrayListClass();
+
 
 
         Integer LGrup1 = 0;
@@ -113,9 +113,9 @@ public class FXMLDocumentController implements Initializable {
     @FXML public void BotoConectar(ActionEvent event) throws Exception {
         Thread.sleep(750);
         if(Client.client() == true){
-            coneccio.setText("Conectat");
+            coneccio.setText("Connectat");
         }else {
-            coneccio.setText("Sense Conexio");
+            coneccio.setText("Sense Conexió");
         }
     }
     
@@ -135,35 +135,23 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML public void BotoCargar(ActionEvent event) throws Exception{
         LlegeixXML.vHistorialAccionsXML();
-        
-        //STACK
         Thread.sleep(1000);
-        if(stack.mida() < 0){
-            System.out.print("No hi ha res al Stack\n");
-        }else {
-            try{
-                nLuz = stack.getTop();
-                LGrup2 = stack.getTop();
-                LGrup1 = stack.getTop();
-            } catch (Exception e) {
-            System.err.println(e.getMessage());
-            } 
-        }
+        array.cargaArrayList();
+        Thread.sleep(750);
         
-        //MAP
-        Thread.sleep(1000);
-        if(mapout.isEmpty() == true){
-            System.out.print("No hi ha res al Map\n");
-        }else {
-            try{
-                nPito = mapout.getData("Pito");
-                nBoto = mapout.getData("Boto");
-                nServoCount = mapout.getData("Servo");
+        try{
+            System.out.print("\n");
+            LGrup1 = array.getData(2);
+            LGrup2 = array.getData(1);
+            nLuz = array.getData(0);
+            nPito = array.getData(3);
+            nBoto = array.getData(4);
+            nServoCount = array.getData(5);
+            System.out.print(LGrup1 + " " + LGrup2 + " " + nLuz + " " + nPito + " " + nBoto + " " + nServoCount + "\n");
+        }catch (Exception e) {
+        System.err.println(e.getMessage());
+        } 
 
-            } catch (Exception e) {
-            System.err.println(e.getMessage());
-            } 
-        }
     }
     
      int stateBoto1 = 0; 
