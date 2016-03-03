@@ -5,6 +5,9 @@
  */
 package InternalClass;
 
+import java.net.URL;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -16,15 +19,15 @@ import javax.sound.sampled.Clip;
 public class OuterClass {
     private class Inner{
         
-        public void print(){	   
-        System.out.println("Hola, soc una clase interna :)");
+        public void play(){	   
+        System.out.println("Audio clase interna");
         
         try {
-        Clip clip = AudioSystem.getClip();
-        AudioInputStream inputStream = AudioSystem.getAudioInputStream(
-        OuterClass.class.getResourceAsStream("@resources/sound4.mp3"));
-        clip.open(inputStream);
-        clip.start(); 
+            Clip clip = AudioSystem.getClip();
+            AudioInputStream inputStream = AudioSystem.getAudioInputStream(OuterClass.class.getResource("/sound4.wav"));
+            clip.open(inputStream);
+            clip.start();
+ 
       } catch (Exception e) {
         System.err.println(e.getMessage());
       }
@@ -34,7 +37,7 @@ public class OuterClass {
    //Accessing he inner class from the method within
     public void cridarInner(){
       Inner inner = new Inner();
-      inner.print();
+      inner.play();
    }
 }
 

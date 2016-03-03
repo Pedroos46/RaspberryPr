@@ -1,6 +1,8 @@
 
 package XMLRW;
 
+import DataStructures.MapClass;
+import DataStructures.StackClass;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
 import org.w3c.dom.Document;
@@ -16,11 +18,13 @@ import java.io.File;
 public class XMLReader {
     public XMLReader(){}
     
-    public String hola = "hola";
+    StackClass stack = new StackClass();
+    MapClass mapout = new MapClass();
+    
     
     public void vHistorialAccionsXML(){
         File desktop = new File(System.getProperty("user.home"), "Desktop");
-        
+         
         try {
 
             File fXmlFile = new File(desktop+"\\RaspberryXML\\HistorialAccions.xml");
@@ -41,8 +45,9 @@ public class XMLReader {
                     if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
                             Element eElement = (Element) nNode;
-                            System.out.println("Contador: " + eElement.getElementsByTagName("Vegades_utlitzat").item(0).getTextContent());
-                            
+                            String LGrup1 = (eElement.getElementsByTagName("Vegades_utlitzat").item(0).getTextContent());
+                            System.out.println("Contador: " + LGrup1);
+                            stack.push(LGrup1); //led1 esta primer
 
                     }
             }
@@ -54,9 +59,10 @@ public class XMLReader {
                     if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
                             Element eElement = (Element) nNode;
-                            System.out.println("Contador: " + eElement.getElementsByTagName("Vegades_utlitzat").item(0).getTextContent());
-                            
-
+                            String LGrup2 = (eElement.getElementsByTagName("Vegades_utlitzat").item(0).getTextContent());
+                            System.out.println("Contador: " + LGrup2);
+                            stack.push(LGrup2); //led 2 esta primer i led 1 segon
+        
                     }
             }
             NodeList nListLuz = doc.getElementsByTagName("Luz");
@@ -67,8 +73,9 @@ public class XMLReader {
                     if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
                             Element eElement = (Element) nNode;
-                            System.out.println("Contador: " + eElement.getElementsByTagName("Vegades_utlitzat").item(0).getTextContent());
-                            
+                            String Luz = (eElement.getElementsByTagName("Vegades_utlitzat").item(0).getTextContent());
+                            System.out.println("Contador: " + Luz);
+                            stack.push(Luz); //luz esta esta pimer, led2 segon, led 1 tercer
 
                     }
             }
@@ -80,8 +87,11 @@ public class XMLReader {
                     if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
                             Element eElement = (Element) nNode;
-                            System.out.println("Contador: " + eElement.getElementsByTagName("Vegades_utlitzat").item(0).getTextContent());
+                            String Pito = (eElement.getElementsByTagName("Vegades_utlitzat").item(0).getTextContent());
+                            System.out.println("Contador: " + Pito);
                             
+                            int nPito = Integer.parseInt(Pito);
+                            mapout.put(nNode.getNodeName(), nPito);
 
                     }
             }
@@ -93,8 +103,11 @@ public class XMLReader {
                     if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
                             Element eElement = (Element) nNode;
-                            System.out.println("Contador: " + eElement.getElementsByTagName("Vegades_utlitzat").item(0).getTextContent());
+                            String Boto = (eElement.getElementsByTagName("Vegades_utlitzat").item(0).getTextContent());
+                            System.out.println("Contador: " + Boto);
                             
+                            int nBoto = Integer.parseInt(Boto);
+                            mapout.put(nNode.getNodeName(), nBoto);
 
                     }
             }
@@ -106,15 +119,18 @@ public class XMLReader {
                     if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
                             Element eElement = (Element) nNode;
-                            System.out.println("Contador: " + eElement.getElementsByTagName("Vegades_utlitzat").item(0).getTextContent());
+                            String Servo = (eElement.getElementsByTagName("Vegades_utlitzat").item(0).getTextContent());
+                            System.out.println("Contador: " + Servo);
                             
-
+                            int nServo = Integer.parseInt(Servo);
+                            mapout.put(nNode.getNodeName(), nServo);
                     }
             }
         }catch (Exception e) {
          System.err.println(e.getMessage());
+        }
     }
-  }
-
 }
+
+
     

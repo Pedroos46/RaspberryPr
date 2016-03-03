@@ -5,6 +5,8 @@
  */
 package rasppractica;
 
+import DataStructures.MapClass;
+import DataStructures.StackClass;
 import InternalClass.OuterClass;
 import XMLRW.XMLWriter;
 import XMLRW.XMLReader;
@@ -44,6 +46,8 @@ public class FXMLDocumentController implements Initializable {
     
     //OTHER
     OuterClass outer=new OuterClass();
+    StackClass stack = new StackClass();
+    MapClass mapout = new MapClass();
 
 
         int LGrup1 = 0;
@@ -69,12 +73,12 @@ public class FXMLDocumentController implements Initializable {
     @FXML public Label estatled1;
     @FXML public Label estatled2;
     @FXML public Label estatalarma;
-    @FXML public Label clicat;
-    @FXML public Label llum;
+    //@FXML public Label clicat;
+    //@FXML public Label llum;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        while(true){
+        /*while(true){
             try {
                 Thread.sleep(750);
             } catch (InterruptedException ex) {
@@ -103,7 +107,7 @@ public class FXMLDocumentController implements Initializable {
             }
             
             
-        }
+        }*/
     }    
     
     @FXML public void BotoConectar(ActionEvent event) throws Exception {
@@ -130,26 +134,57 @@ public class FXMLDocumentController implements Initializable {
                 Luz, LuzCount, Pito, PitoCount, Boton, BotoCount, Servo, ServoCount);
     }
     
-    @FXML public void BotoCargar(ActionEvent event) {
+    @FXML public void BotoCargar(ActionEvent event) throws Exception{
         LlegeixXML.vHistorialAccionsXML();
-        String xd = "";
-        LlegeixXML.hola = xd;
         
-        //TODO AGAFAR DE LA CLASE XMLReader y redeclarar variables aqui
+        //STACK
+        Thread.sleep(1000);
+        if(stack.isEmpty() == true){
+            System.out.print("No hi ha res al Stack\n");
+        }else {
+            try{
+                nLuz = Integer.parseInt(stack.getTop());
+                stack.pop();
+                LGrup2 = Integer.parseInt(stack.getTop());
+                stack.pop();
+                LGrup1 = Integer.parseInt(stack.getTop());
+                stack.pop();
+            } catch (Exception e) {
+            System.err.println(e.getMessage());
+            } 
+        }
+        
+        //MAP
+        Thread.sleep(1000);
+        if(mapout.isEmpty() == true){
+            System.out.print("No hi ha res al Map\n");
+        }else {
+            try{
+                nPito = mapout.getData("Pito");
+                System.out.print(mapout.getData("Pito"));
+                System.out.print(nPito);
+                nBoto = mapout.getData("Boto");
+                nServoCount = mapout.getData("Servo");
+
+            } catch (Exception e) {
+            System.err.println(e.getMessage());
+            } 
+        }
     }
     
      int stateBoto1 = 0; 
     @FXML public void BotoLed1(ActionEvent event) throws Exception {
-        
+        outer.cridarInner();
+
         if(stateBoto1 == 0){
             LGrup1++;
             LedGrup1 = "Ences";
-            //client.EncendreLedGrup1();
+            client.EncendreLedGrup1();
             estatled1.setText("ON");
             stateBoto1 = 1;
         }else{if(stateBoto1 == 1){
             LedGrup1 = "Apagat";   
-            //client.ApagarLedGrup1();
+            client.ApagarLedGrup1();
             estatled1.setText("OFF");
             stateBoto1 = 0;
             }
@@ -158,16 +193,17 @@ public class FXMLDocumentController implements Initializable {
     
    int stateBoto2 = 0; 
     @FXML public void BotoLed2(ActionEvent event) throws Exception {
-                 
+        outer.cridarInner();
+         
         if(stateBoto2 == 0){
             LGrup2++;
             LedGrup2 = "Ences";
-            //client.EncendreLedGrup2();
+            client.EncendreLedGrup2();
             estatled2.setText("ON");
             stateBoto2 = 1;
         }else{if(stateBoto2 == 1){
             LedGrup2 = "Apagat";   
-            //client.ApagarLedGrup2();
+            client.ApagarLedGrup2();
             estatled2.setText("OFF");
             stateBoto2 = 0;
             }
@@ -176,16 +212,17 @@ public class FXMLDocumentController implements Initializable {
 
     int stateAlarma = 0; 
     @FXML public void BotoAlarma(ActionEvent event) throws Exception {
+        outer.cridarInner();
         
         if(stateAlarma == 0){
             nPito++;
             Pito = "Ences";
-            //client.EncendrePito();
+            client.EncendrePito();
             estatalarma.setText("ON");
             stateAlarma = 1;
         }else{if(stateAlarma == 1){
             Pito = "Apagat";   
-            //client.ApagarPito();
+            client.ApagarPito();
             estatalarma.setText("OFF");
             stateAlarma = 0;
             }
@@ -195,7 +232,7 @@ public class FXMLDocumentController implements Initializable {
     int stateBotoServo = 0; 
     @FXML public void BotoActivaServo(ActionEvent event) throws Exception {
         outer.cridarInner();
-      
+        
         if(stateBoto1 == 0){
             nServoCount++;
             Servo = "Ences";

@@ -29,7 +29,7 @@ public class RaspPractica extends Application {
         stage.setTitle("Raspberry Control.");
 
         
-        fil.start();
+        //fil.start();
         
     }
 
