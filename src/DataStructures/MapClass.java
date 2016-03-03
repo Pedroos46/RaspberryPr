@@ -7,6 +7,7 @@ package DataStructures;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 /**
  *
@@ -15,14 +16,15 @@ import java.util.Map;
 public class MapClass {
     public MapClass(){}
     
-    Map<String, Integer> map = new HashMap<String, Integer>();
+    static HashMap<String, Integer> map = new HashMap<String, Integer>();
     
     public void put(String i, Integer e){
-        map.put(i, e);
+        map.put(i, new Integer(e));
         System.out.print("Put fet " + i + " " + e + "\n" );
     }
     
     public int getData(String i){
+        System.out.print(map);
         return(map.get(i).intValue());
     }
     

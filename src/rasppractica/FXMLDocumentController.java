@@ -50,16 +50,16 @@ public class FXMLDocumentController implements Initializable {
     MapClass mapout = new MapClass();
 
 
-        int LGrup1 = 0;
+        Integer LGrup1 = 0;
         String LedGrup1 = "Apagat";
         
-        int LGrup2 = 0;
+        Integer LGrup2 = 0;
         String LedGrup2= "Apagat" ;
                     
-        int nLuz = 0 ;
+        Integer nLuz = 0 ;
         String Luz= "Apagat"; //ASINCRONO O POTSE SINCRONO PERO NO ENCARA VAL, POTSE LE POSO ALLA A UN FIL A CORRE I ENGA 
         
-        int nPito = 0;
+        Integer nPito = 0;
         String Pito= "Apagat"; 
         
         int nBoto = 0;
@@ -114,7 +114,6 @@ public class FXMLDocumentController implements Initializable {
         Thread.sleep(750);
         if(Client.client() == true){
             coneccio.setText("Conectat");
-            //TODO: INHABILITAT EL BOTO
         }else {
             coneccio.setText("Sense Conexio");
         }
@@ -139,16 +138,13 @@ public class FXMLDocumentController implements Initializable {
         
         //STACK
         Thread.sleep(1000);
-        if(stack.isEmpty() == true){
+        if(stack.mida() < 0){
             System.out.print("No hi ha res al Stack\n");
         }else {
             try{
-                nLuz = Integer.parseInt(stack.getTop());
-                stack.pop();
-                LGrup2 = Integer.parseInt(stack.getTop());
-                stack.pop();
-                LGrup1 = Integer.parseInt(stack.getTop());
-                stack.pop();
+                nLuz = stack.getTop();
+                LGrup2 = stack.getTop();
+                LGrup1 = stack.getTop();
             } catch (Exception e) {
             System.err.println(e.getMessage());
             } 
@@ -161,8 +157,6 @@ public class FXMLDocumentController implements Initializable {
         }else {
             try{
                 nPito = mapout.getData("Pito");
-                System.out.print(mapout.getData("Pito"));
-                System.out.print(nPito);
                 nBoto = mapout.getData("Boto");
                 nServoCount = mapout.getData("Servo");
 

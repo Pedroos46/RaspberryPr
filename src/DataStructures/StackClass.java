@@ -12,33 +12,34 @@ import java.util.Stack;
  * @author Roger
  */
 public class StackClass {
-    public StackClass(){     
+    public StackClass(){
     }
     
-    Stack<Integer> stack = new Stack<>();
+    static Stack<Integer> stack = new Stack<Integer>();
   
-    public void push(Int i){
-        stack.push(new Integer(i));
+    public void push(Integer i){
+        stack.push(i);
         System.out.println("Push fet." + i);
-    }
-    
-    public void pop(){
-        stack.pop();
-        System.out.println("Pop fet.");
+        System.out.print((stack).toString());
     }
     
     public boolean isEmpty(){
         return(stack.isEmpty());
     }
     
-    public int peek(){
-        return (stack.peek());
+    public int mida(){
+        int size = stack.size() -1;
+        return(size);
     }
     
-    public int getTop(){
-        System.out.print(stack);
+    /*public int peek(){
+        return (stack.peek());
+    }    */
+    public Integer getTop(){
+        System.out.print(stack.toString());
         System.out.println("S'ha agafat el primer del Stack.");
-        return(stack.peek());
+        Integer a = stack.pop();
+        return(a);
     }
     
 }

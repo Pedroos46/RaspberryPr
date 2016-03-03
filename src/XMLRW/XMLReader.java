@@ -47,7 +47,9 @@ public class XMLReader {
                             Element eElement = (Element) nNode;
                             String LGrup1 = (eElement.getElementsByTagName("Vegades_utlitzat").item(0).getTextContent());
                             System.out.println("Contador: " + LGrup1);
-                            stack.push(LGrup1); //led1 esta primer
+                            
+                            Integer nLGrup1 = Integer.parseInt(LGrup1);
+                            stack.push(nLGrup1); //led1 esta primer
 
                     }
             }
@@ -61,7 +63,9 @@ public class XMLReader {
                             Element eElement = (Element) nNode;
                             String LGrup2 = (eElement.getElementsByTagName("Vegades_utlitzat").item(0).getTextContent());
                             System.out.println("Contador: " + LGrup2);
-                            stack.push(LGrup2); //led 2 esta primer i led 1 segon
+                                                        
+                            Integer nLGrup2 = Integer.parseInt(LGrup2);
+                            stack.push(nLGrup2); //led 2 esta primer i led 1 segon
         
                     }
             }
@@ -75,7 +79,9 @@ public class XMLReader {
                             Element eElement = (Element) nNode;
                             String Luz = (eElement.getElementsByTagName("Vegades_utlitzat").item(0).getTextContent());
                             System.out.println("Contador: " + Luz);
-                            stack.push(Luz); //luz esta esta pimer, led2 segon, led 1 tercer
+                            
+                            Integer nLuz = Integer.parseInt(Luz);                           
+                            stack.push(nLuz); //luz esta esta pimer, led2 segon, led 1 tercer
 
                     }
             }
