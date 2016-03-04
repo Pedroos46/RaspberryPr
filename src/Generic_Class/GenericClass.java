@@ -23,6 +23,10 @@ public class GenericClass <T,E> {
         return nombrecolecion;
     }
     
+    public int obtenirSize(){
+        return lista.size();   
+    }
+    
     public ArrayList obtenirColeciones(){
         return lista;
     }
@@ -31,4 +35,20 @@ public class GenericClass <T,E> {
        lista.add((E) e);
    }
     
+ public String toString(){
+        return "ClasseGenerica amb tamany "+obtenirSize()+" i nom "+ obtenirNombreColecion();
+    }
+     
+    public int compare(GenericClass o1, GenericClass o2) {
+        if (o1.obtenirSize() == o2.obtenirSize()){
+         return 0;
+        
+        }else{  if (o1.obtenirSize() > o2.obtenirSize()){
+               return 1;
+        }else  if (o1.obtenirSize() < o2.obtenirSize()){
+        
+               return -1;
+        }return 0;
+        } 
+    }
 }
