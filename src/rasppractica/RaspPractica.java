@@ -19,6 +19,7 @@ import client.ClientAsincron;
 public class RaspPractica extends Application {
     
    ClientAsincron fil = new ClientAsincron();
+   FXMLDocumentController bucle = new FXMLDocumentController();
     
     @Override
     public void start(Stage stage) throws Exception {
@@ -29,7 +30,7 @@ public class RaspPractica extends Application {
         stage.setTitle("Raspberry Control.");
 
         
-        //fil.start();
+        fil.start();
         
     }
 

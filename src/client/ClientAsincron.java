@@ -8,6 +8,8 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 
 /**
  * @author Roger
@@ -22,13 +24,16 @@ public class ClientAsincron extends Thread {
     public int nEstatLDR;
     public int nEstatBoto;
     
+    @FXML public Label boto;
+    @FXML public Label llum;
+    
     @Override
     public void run(){  
         while(true){
             System.out.println("FIL SINCRON PER LDR O BOTO");
             
             try {
-                Thread.sleep(1000);
+                Thread.sleep(750);
             } catch (InterruptedException ex) {
                 Logger.getLogger(ClientAsincron.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -44,7 +49,7 @@ public class ClientAsincron extends Thread {
             } catch (Exception ex) {
                 Logger.getLogger(ClientAsincron.class.getName()).log(Level.SEVERE, null, ex);
             }
-                
+     
         }  
     }
     
@@ -55,7 +60,7 @@ public class ClientAsincron extends Thread {
             Api remoteApi = (Api) registre.lookup(Api.class.getSimpleName());
 
             returnedData = (remoteApi.LlegirLDR(new Data(1)).getValor());
-            System.out.println("EncendrePito:" + returnedData);
+            System.out.println("LDR:" + returnedData);
         }catch (RemoteException | NotBoundException e){
              System.err.println(e.getMessage());
         }
@@ -70,11 +75,52 @@ public class ClientAsincron extends Thread {
             Api remoteApi = (Api) registre.lookup(Api.class.getSimpleName());
 
             returnedData = (remoteApi.LlegirBoto(new Data(1)).getValor());
-            System.out.println("ApagarPito:" + returnedData);
+            System.out.println("Boto:" + returnedData);
         }catch (RemoteException | NotBoundException e){
              System.err.println(e.getMessage());
         }
     
         return returnedData;
     }
+    
+    public void BucleAsincron(){
+        while(true){
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(ClientAsincron.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            System.out.print("Comprovacio asincrona funcionant.\n");
+            
+            int tempLuz;
+            try{
+                tempLuz = nEstatLDR ;
+                if (tempLuz == 1){
+                    //Luz = "Dectecto llum";
+                    llum.setText("Llum");
+                } else {
+                    //Luz = "Poca Llum/Fosc";
+                    llum.setText("Sense Llum");
+                }
+            }catch (Exception e) {
+            System.err.println(e.getMessage());
+            } 
+            
+            int tempBoto;
+            try{
+                tempBoto = nEstatBoto;
+                if (tempBoto == 1){
+                    //Boton = "Pulsat";
+                    boto.setText("Pulsat");
+
+                }else{
+                    //Boton = "No Pulsat";
+                    boto.setText("No pulsat");
+                }
+            }catch (Exception e) {
+            System.err.println(e.getMessage());
+            } 
+             
+        }
+    }    
 }

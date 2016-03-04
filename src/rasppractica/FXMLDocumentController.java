@@ -73,42 +73,13 @@ public class FXMLDocumentController implements Initializable {
     @FXML public Label estatled1;
     @FXML public Label estatled2;
     @FXML public Label estatalarma;
-    //@FXML public Label clicat;
-    //@FXML public Label llum;
+   //@FXML public Label boto;
+   //@FXML public Label llum;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        /*while(true){
-            try {
-                Thread.sleep(750);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            int tempLuz;
-            tempLuz = asincron.nEstatLDR ;
-            if (tempLuz == 1){
-                Luz = "Dectecto llum";
-                llum.setText("Llum");
-            } else {
-                Luz = "Poca Llum/Fosc";
-                llum.setText("Sense Llum");
-            }
-            
-            int tempBoto;
-            tempBoto = asincron.nEstatBoto;
-            if (tempBoto == 1){
-                Boton = "Pulsat";
-                clicat.setText("Pulsat");
-
-            }else{
-                Boton = "No Pulsat";
-                clicat.setText("No pulsat");
-            }
-            
-            
-        }*/
-    }    
+        
+    }
     
     @FXML public void BotoConectar(ActionEvent event) throws Exception {
         Thread.sleep(750);
