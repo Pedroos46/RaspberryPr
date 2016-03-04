@@ -21,25 +21,18 @@ public class StackClass {
         stack.push(i);
         System.out.println("Push fet." + i);
         System.out.print((stack).toString());
-    }
-    
-    public boolean isEmpty(){
-        return(stack.isEmpty());
+        System.out.println("\n");
+
     }
     
     public int mida(){
         int size = stack.size() -1;
         return(size);
     }
-    
-    /*public int peek(){
-        return (stack.peek());
-    }    */
     public Integer getTop(){
-        System.out.print(stack.toString());
-        System.out.println("S'ha agafat el primer del Stack.");
-        Integer a = stack.pop();
-        return(a);
+        System.out.println("\n");
+        System.out.print(stack.toString() +"S'ha agafat el primer del Stack.\n");
+        return(stack.pop());
     }
     
 }

@@ -20,12 +20,16 @@ public class MapClass {
     
     public void put(String i, Integer e){
         map.put(i, new Integer(e));
-        System.out.print("Put fet " + i + " " + e + "\n" );
+        System.out.print("Put fet  " + i + " " + e + "\n" );
+        System.out.println(map.toString());
+        System.out.println("\n");
     }
     
     public int getData(String i){
-        System.out.print(map);
+        System.out.println("\n");
+        System.out.print(map.toString() + "S'ha agafat el valor de" + i + " del Map.\n");
         return(map.get(i).intValue());
+        
     }
     
     public boolean isEmpty(){
