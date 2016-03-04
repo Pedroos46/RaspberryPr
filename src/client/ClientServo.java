@@ -15,14 +15,18 @@ import java.rmi.registry.Registry;
  *
  * @author Roger
  */
-public abstract class ClientServo {
+public class ClientServo extends Servo{
     public ClientServo(){}
     
     private static final String HOST = "192.168.1.3"; //localhost
     private static final int PORT = 1080;
     private static Registry registre;
     
-    
+    /**
+     *
+     * @throws Exception
+     */
+    @Override
     public void Servo() throws Exception{
         try{
             registre = LocateRegistry.getRegistry(HOST, PORT);
