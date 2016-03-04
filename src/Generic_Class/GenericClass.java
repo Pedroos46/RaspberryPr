@@ -1,8 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+ * Clase Generica donde guardamos Estructuras de datos y las guardamos en txt.
+ * Esta clase sirve para hacer una coleccion de estructuras y ordenarlas para luego guardarlas en un txt
+ * 
+*/
 package Generic_Class;
 
 import java.util.ArrayList;
@@ -15,31 +15,38 @@ public class GenericClass <T,E> {
     ArrayList<E> lista= new ArrayList<E>();
 
     public GenericClass(T nombrecolecion) {
+        /**Metodo para guardar el nombre de la colecion*/
         this.nombrecolecion = nombrecolecion;
     }
     
     
     public T obtenirNombreColecion(){
+       /**Metodo que devuelve el nombre de la colecion*/
         return nombrecolecion;
     }
     
     public int obtenirSize(){
+        /**Metodo que devuelve el size de la colecion*/
         return lista.size();   
     }
     
     public ArrayList obtenirColeciones(){
+        /**Metodo que devuelve la colecion*/
         return lista;
     }
     
     public void afegirColeciones(E e){
-       lista.add((E) e);
+      /**Metodo para añadir datos a la colecion*/
+        lista.add((E) e);
    }
     
  public String toString(){
-        return "ClasseGenerica amb tamany "+obtenirSize()+" i nom "+ obtenirNombreColecion();
+     /**Metodo para devolver un string para printarlo*/   
+     return "ClasseGenerica amb tamany "+obtenirSize()+" i nom "+ obtenirNombreColecion();
     }
      
     public int compare(GenericClass o1, GenericClass o2) {
+        /**Metodo de comparacion por tamaño*/
         if (o1.obtenirSize() == o2.obtenirSize()){
          return 0;
         

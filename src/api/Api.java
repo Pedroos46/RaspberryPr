@@ -2,18 +2,12 @@ package api;
 
 import java.rmi.*;
 /**
- * la interfície per al nostre objecte remot. 
- * En el nostre cas es tracta d'una senzilla interfície per incrementar un comptador compartit.
- * a nostra interfície implementa java.rmi.Remote per marcar la interfície com a disponible de forma remota. 
- * Així mateix, la interfície utilitza una classe de dades per emmagatzemar les dades. 
- * @author sergi grau
- * @version 1.0 26.04.2013
+ * Interficie para nuestro objeto remoto.
+ * En nuestro caso se trata de nuna interficie que pasa objetos la cual enciende o apga leds, pitos, etc.
  */
 public interface Api extends Remote {
     /**
-     * comptador. Rep un objecte Data que encapsula un nombre enter
-     * @param objecte, el valor amb l'enter a incremetar
-     * @return retorna el objecte amb el valor incrementat
+     * @param objecte, el valor true o false
      * @throws RemoteException 
      */
     public Data Conectivitat(Data objecte) throws RemoteException;

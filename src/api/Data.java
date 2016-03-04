@@ -1,10 +1,8 @@
 package api;
 
 /**
- * Classe per emmagatzemar dades.
- * Objectes d'aquesta classe s'envien a través de la xarxa
- * @author sergi grau
- * @version 1.0 26.04.2013
+ * Clase para almacenar Datos.
+ * Objetos de esta clase se envian a traves de la Red
  */
 import java.io.*;
 

@@ -13,13 +13,15 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
 /**
- *
- * @author Roger
- */
+ * Clase Interna.
+ * Esta clase sirve para reproducir un sonido cada vez que pulsamos una tecla
+ * 
+*/
 public class OuterClass {
     private class Inner{
         
-        public void play(){	   
+        public void play(){
+            /**Metodo para reproducuir el sonido*/
         System.out.println("Audio clase interna");
         
         try {
@@ -36,6 +38,7 @@ public class OuterClass {
    }
    //Accessing he inner class from the method within
     public void cridarInner(){
+        /**Llamada a la clase interna*/
       Inner inner = new Inner();
       inner.play();
    }

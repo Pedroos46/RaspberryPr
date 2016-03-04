@@ -25,8 +25,9 @@ import javafx.scene.control.ButtonType;
 import javax.xml.transform.OutputKeys;
 
 /**
- *
- * @author Roger
+ *Clase que coge las variables y las guarda en un XML.
+ * Esta clase guarda las variables en un XML
+ * 
  */
 public class XMLWriter extends CustomExceptions{
     public XMLWriter(){}
@@ -34,10 +35,12 @@ public class XMLWriter extends CustomExceptions{
     public String vActualTime(){
  	   DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	   //get current date time with Date()
+           /**Coge la fecha actual*/
 	   Date date = new Date();
 	   System.out.println(dateFormat.format(date));
 	  
 	   //get current date time with Calendar()
+           /**Coge la fecha actual*/
 	   Calendar cal = Calendar.getInstance();
 	   String DataActual = ((dateFormat.format(cal.getTime())).toString());
         
@@ -47,6 +50,7 @@ public class XMLWriter extends CustomExceptions{
     
   
     public void vCarpetaEscriptori()throws ExcepcioCarpetaNoCreada{
+        /**Crea la carpeta en el escriptorio en caso que no este creada saca un alert que nos pregunta si la queremos crear o no*/
         File desktop = new File(System.getProperty("user.home"), "Desktop");
         File theDir = new File(desktop + "\\RaspberryXML");
             theDir.setReadable(true);
@@ -81,7 +85,7 @@ public class XMLWriter extends CustomExceptions{
     public void vHistorialAccionsXML(String LedGrup1, String LedGrup1Count, String LedGrup2, 
             String LedGrup2Count, String Luz, String LuzCount, String Pito, String PitoCount, 
             String Boto, String BotoCount, String Servo, String ServoCount){
-        
+        /**Metodo que guarda las variables en un XML*/
          try {
             File desktop = new File(System.getProperty("user.home"), "Desktop");
             desktop.canRead();

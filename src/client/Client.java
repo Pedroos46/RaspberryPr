@@ -10,15 +10,14 @@ import java.rmi.UnknownHostException;
 import java.rmi.registry.*;
 
 /**
- * Classe que implementa un client RMI
- * Per implementar aquest codi en diferents màquines que necessita per crear 3 arxius jar:
- * api.jar: Api.java, Data.java 
- * server.jar: Server.java, ApiImpl.java 
- * client.jar: Client.java
- * En l'equip del servidor de la ruta de classe contindrà api.jar i server.jar 
- * En l'equip client de la ruta de classe contindrà api.jar i client.jar
- * @author sergi grau
- * @version 1.0 26.04.2013
+ * Clase que implementa un cliente RMI
+ * Para implementar este código en diferentes máquinas se necesitan 3 archivos jar :
+ * Api.jar : Api.java , Data.java
+ * Server.jar : Server.java , ApiImpl.java
+ * Client.jar : Client.java
+ * En el equipo del servidor contendrá api.jar y server.jar
+ * En el equipo cliente contendrá api.jar y client.jar
+
  */
 public class Client {
     public Client(){}
