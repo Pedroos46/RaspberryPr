@@ -1,7 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Esta clse clase cuenta con dos excepciones que se usan en el XMLWritter en caso de que la carpets no exista.
+ *
  */
 package Exceptions;
 

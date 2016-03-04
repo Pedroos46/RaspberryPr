@@ -7,7 +7,7 @@ package client;
 
 /**
  *
- * @author cook
+ * Clase Abstracta.
  */
 public abstract class Servo {
     

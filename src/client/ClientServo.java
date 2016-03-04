@@ -24,7 +24,8 @@ public class ClientServo extends Servo{
     
     /**
      *
-     * @throws Exception
+     * Clase Diferida.
+     * Esta clase hereda de servo
      */
     @Override
     public void Servo() throws Exception{

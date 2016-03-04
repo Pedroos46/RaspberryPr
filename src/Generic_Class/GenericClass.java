@@ -1,7 +1,7 @@
 /**
  * Clase Generica donde guardamos Estructuras de datos y las guardamos en txt.
  * Esta clase sirve para hacer una coleccion de estructuras y ordenarlas para luego guardarlas en un txt
- * 
+ * usando la clase comparator.
 */
 package Generic_Class;
 

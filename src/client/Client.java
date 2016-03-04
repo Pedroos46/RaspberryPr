@@ -50,6 +50,7 @@ public class Client {
     }
     
     public int EncendreLedGrup1() throws Exception{
+        /**Metodo que enciende el primer grupo de LEDs*/
         int returnedData = 5;
         try{
             registre = LocateRegistry.getRegistry(HOST, PORT);
@@ -65,7 +66,9 @@ public class Client {
     }
     
      public int ApagarLedGrup1() throws Exception{
-        int returnedData = 5;
+                /**Metodo que apaga el primer grupo de LEDs*/
+
+         int returnedData = 5;
         try{
             registre = LocateRegistry.getRegistry(HOST, PORT);
             Api remoteApi = (Api) registre.lookup(Api.class.getSimpleName());
@@ -80,7 +83,9 @@ public class Client {
     }
      
       public int EncendreLedGrup2() throws Exception{
-        int returnedData = 5;
+                /**Metodo que enciende el segundo grupo de LEDs*/
+
+          int returnedData = 5;
         try{
             registre = LocateRegistry.getRegistry(HOST, PORT);
             Api remoteApi = (Api) registre.lookup(Api.class.getSimpleName());
@@ -96,7 +101,9 @@ public class Client {
     }
     
      public int ApagarLedGrup2() throws Exception{
-        int returnedData = 5;
+               /**Metodo que apaga el segundo grupo de LEDs*/
+
+         int returnedData = 5;
         try{
             registre = LocateRegistry.getRegistry(HOST, PORT);
             Api remoteApi = (Api) registre.lookup(Api.class.getSimpleName());
@@ -112,7 +119,9 @@ public class Client {
     }
      
      public int EncendrePito() throws Exception{
-        int returnedData = 5;
+                /**Metodo que enciende el pito*/
+
+         int returnedData = 5;
         try{
             registre = LocateRegistry.getRegistry(HOST, PORT);
             Api remoteApi = (Api) registre.lookup(Api.class.getSimpleName());
@@ -128,6 +137,8 @@ public class Client {
     }
      
     public int ApagarPito() throws Exception{
+                /**Metodo que apaga el pito*/
+
         int returnedData = 5;
         try{
             registre = LocateRegistry.getRegistry(HOST, PORT);

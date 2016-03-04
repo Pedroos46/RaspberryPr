@@ -12,7 +12,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 /**
- * @author Roger
+ * Clase asincronoa.
+ * Esta clase crea un hilo Asincrono donde lee el boton y el LDR
  */
 public class ClientAsincron extends Thread {
     public ClientAsincron(){}
@@ -32,6 +33,8 @@ public class ClientAsincron extends Thread {
     
     @Override
     public void run(){  
+                /**Metodo que arranca el hilo*/
+
         while(true){
             System.out.println("FIL SINCRON PER LDR O BOTO");
             
@@ -57,6 +60,8 @@ public class ClientAsincron extends Thread {
     }
     
     public int LlegirLDR() throws Exception{
+               /**Metodo que lee el LDR*/
+
         int returnedData = 5;
         try{
             registre = LocateRegistry.getRegistry(HOST, PORT);
@@ -72,6 +77,8 @@ public class ClientAsincron extends Thread {
     }
      
     public int LlegirBoto() throws Exception{
+                /**Metodo que lee el boton*/
+
         int returnedData = 5;
         try{
             registre = LocateRegistry.getRegistry(HOST, PORT);
@@ -87,7 +94,9 @@ public class ClientAsincron extends Thread {
     }
     
   public void BucleAsincron(){
-        while(true){
+              /**bucle Asincrono*/
+ 
+      while(true){
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException ex) {
