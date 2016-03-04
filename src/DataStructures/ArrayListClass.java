@@ -1,15 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package DataStructures;
 
 import java.util.ArrayList;
 
 /**
- *
- * @author Roger
+ *Clase contenedora de las variables que recibe del XML.
+ * Esta clase guarda las variables que recibe y luego las pasa a variables generales (contadores)
+ * 
  */
 public class ArrayListClass {
     public ArrayListClass(){}
@@ -20,10 +17,12 @@ public class ArrayListClass {
     MapClass mapout = new MapClass();
  
 public int getData(int i){
+    /**Metodo para demostrar la recogida de datos*/
     return(array.get(i));
 }
       
 public void cargaArrayList() throws Exception {
+    /**Metodo para demostrar la carga de datos*/
     System.out.print("\nPASANT A ARRAYLIST");
     
     //STACK

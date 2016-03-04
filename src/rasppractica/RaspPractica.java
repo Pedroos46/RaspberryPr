@@ -13,8 +13,9 @@ import javafx.stage.Stage;
 import client.ClientAsincron;
 
 /**
- *
- * @author aleix
+ *Clase principal de la aplicacion.
+ * Esta clase inicia la interficie
+ * 
  */
 public class RaspPractica extends Application {
     
