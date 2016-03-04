@@ -57,26 +57,20 @@ public class XMLWriter extends CustomExceptions{
                 boolean result = false;
 
                 try{
-                    theDir.mkdir();
-                    result = true;
+                    Alert alert1 = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert1.setTitle("SecurityException llençada");
+                    alert1.setHeaderText("La carpeta no ha estat creada");
+                    alert1.setContentText("Vols crearla?");
+
+                    Optional<ButtonType> result1 = alert1.showAndWait();
+                    if (result1.get() == ButtonType.OK){ 
+                        theDir.mkdir();
+                        result = true;
+                    }                    
                 } 
                  catch(SecurityException se){
                   throw new ExcepcioCarpetaNoCreada();
                  }
-             /*       Alert alert1 = new Alert(Alert.AlertType.CONFIRMATION);
-    alert1.setTitle("SecurityException llençada");
-    alert1.setHeaderText("La carpeta no ha estat creada");
-    alert1.setContentText("Vols crearla?");
-
-    Optional<ButtonType> result1 = alert1.showAndWait();
-    if (result1.get() == ButtonType.OK){ theDir.mkdir();
-    // ... user chose OK
-    } else {
-    // ... user chose CANCEL or closed the dialog
-}
-               // throw new CustomExceptions.ExcepcioCarpetaNoCreada();
-               }   
-                //catch(throw new ExcepcioCarpetaNoCreada();){}*/   
             if(result) {    
                 System.out.println("DIR created");  
             }
