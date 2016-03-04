@@ -24,6 +24,9 @@ public class ClientAsincron extends Thread {
     public int nEstatLDR;
     public int nEstatBoto;
     
+    public String estatLDREnvio;
+    public String estatBotoEnvio;
+    
     @FXML public Label boto;
     @FXML public Label llum;
     
@@ -83,7 +86,7 @@ public class ClientAsincron extends Thread {
         return returnedData;
     }
     
-    public void BucleAsincron(){
+  public void BucleAsincron(){
         while(true){
             try {
                 Thread.sleep(1000);
@@ -96,11 +99,10 @@ public class ClientAsincron extends Thread {
             try{
                 tempLuz = nEstatLDR ;
                 if (tempLuz == 1){
-                    //Luz = "Dectecto llum";
-                    llum.setText("Llum");
+                   estatLDREnvio = "Amb llum";
                 } else {
-                    //Luz = "Poca Llum/Fosc";
-                    llum.setText("Sense Llum");
+                   estatLDREnvio = "Sense Llum";
+
                 }
             }catch (Exception e) {
             System.err.println(e.getMessage());
@@ -110,17 +112,16 @@ public class ClientAsincron extends Thread {
             try{
                 tempBoto = nEstatBoto;
                 if (tempBoto == 1){
-                    //Boton = "Pulsat";
-                    boto.setText("Pulsat");
+                    estatBotoEnvio = "Pulsat";
 
                 }else{
-                    //Boton = "No Pulsat";
-                    boto.setText("No pulsat");
+                    estatBotoEnvio = "No pulsat";
+                    
                 }
             }catch (Exception e) {
             System.err.println(e.getMessage());
             } 
              
         }
-    }    
+    }   
 }
